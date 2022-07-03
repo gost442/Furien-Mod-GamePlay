@@ -130,6 +130,10 @@ public Action Event_OnPlayerSpawn(Event event, const char[] name, bool dontBroad
 			MaxHealth[client] = 115;
 			Max_Health[client] = 150;
 		}
+		if (SlotByName(client, "weapon_knife") == -1)
+		{
+			GivePlayerItem(client, "weapon_knife");
+		}
 	}
 	return Plugin_Continue;
 }
