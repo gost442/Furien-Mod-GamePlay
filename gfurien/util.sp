@@ -196,3 +196,23 @@ stock void F_GetEntityRenderColor(int entity,int color[4])
 		color[i] = GetEntData(entity, offset + i, 1);
 	}
 }
+
+
+public int SlotByName (int client, const char[] szName)
+{
+	char szClassname[36];
+	int entity = -1;
+	
+	for (int i; i <= 5; i++)
+	{
+		if ((entity = GetPlayerWeaponSlot(client, i)) <= MaxClients || !IsValidEntity(entity))
+			continue;
+		
+		GetEntityClassname(entity, szClassname, sizeof szClassname);
+		
+		if (strcmp(szName, szClassname) == 0)
+			return i;
+	}
+	
+	return -1;
+}
