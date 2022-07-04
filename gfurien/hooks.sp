@@ -113,6 +113,7 @@ public Action Event_OnPlayerSpawn(Event event, const char[] name, bool dontBroad
 		b_ClientMovedAfterSpawn[client] = false;
 		if (GetClientTeam(client) == CS_TEAM_CT)
 		{
+			Furien_AddClientMoney(client, MONEY_GIVE_ANTIFURIEN_IN_SPAWN);
 			CreateTimer(0.2, Timer_CTSpawnPost, client);
 			CreateTimer(1.0, Timer_CTRefillAmmo, GetClientUserId(client), TIMER_REPEAT | TIMER_FLAG_NO_MAPCHANGE);
 			GivePlayerItem(client, "weapon_flashbang");
@@ -124,6 +125,7 @@ public Action Event_OnPlayerSpawn(Event event, const char[] name, bool dontBroad
 		}
 		else if (GetClientTeam(client) == CS_TEAM_T)
 		{
+			Furien_AddClientMoney(client, MONEY_GIVE_FURIEN_IN_SPAWN);
 			SetEntProp(client, Prop_Send, "m_ArmorValue", 50);
 			SetEntProp(client, Prop_Send, "m_bHasHelmet", 0);
 			FadeClient(client);
