@@ -87,4 +87,5 @@ public int m_AF_Shop(Menu menu, MenuAction action, int client, int Position)
 			}
 		}
 	}
+	return 0;
 } 
