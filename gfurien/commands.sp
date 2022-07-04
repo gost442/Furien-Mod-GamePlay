@@ -13,6 +13,7 @@ public Action Command_Guns(int client, int args)
 	{
 		if (IsPlayerAlive(client) && GetClientTeam(client) == CS_TEAM_CT)
 		{
+			SetEntProp(client, Prop_Send, "m_iHideHUD", HIDEHUD_RADAR);
 			Menu_SelectWeapon(client);
 		}
 	}
@@ -29,10 +30,11 @@ public Action Command_Shop(int client, int args)
 			{
 				Menu_AF_Shop(client);
 			}
-			else if (GetClientTeam(client) == CS_TEAM_T)
+			if (GetClientTeam(client) == CS_TEAM_T)
 			{
 				Menu_F_Shop(client);
 			}
+			SetEntProp(client, Prop_Send, "m_iHideHUD", HIDEHUD_RADAR);
 		}
 	}
 	return Plugin_Handled;
