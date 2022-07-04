@@ -86,6 +86,7 @@ public int m_AF_Shop(Menu menu, MenuAction action, int client, int Position)
 				}
 			}
 		}
+		SetEntProp(client, Prop_Send, "m_iHideHUD", SHOWHUD_RADAR);
 	}
 	return 0;
 } 
