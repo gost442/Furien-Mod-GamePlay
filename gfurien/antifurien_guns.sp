@@ -94,6 +94,7 @@ public int h_AF_SelectWeapon(Menu menu, MenuAction action, int client, int Posit
 			}
 		}
 	}
+	return 0;
 }
 
 public int h_AF_SelectSecondaryWeapon(Menu menu, MenuAction action, int client, int Position)
@@ -112,4 +113,5 @@ public int h_AF_SelectSecondaryWeapon(Menu menu, MenuAction action, int client, 
 			}
 		}
 	}
+	return 0;
 } 
