@@ -1,19 +1,30 @@
 stock void Furien_TakeClientMoney(int client, int amount)
 {
-	int money = GetEntProp(client, Prop_Send, "m_iAccount");
-	money = money - amount;
-	SetEntProp(client, Prop_Send, "m_iAccount", money);
+	//disable csgo money and use our money
+	//int money = GetEntProp(client, Prop_Send, "m_iAccount");
+	//money = money - amount;
+	//SetEntProp(client, Prop_Send, "m_iAccount", money);
+	
+	if (Player_Money[client] - amount < 0)
+	{
+		Player_Money[client] = 0;
+		return;
+	}
+	Player_Money[client] = Player_Money[client] - amount;
 }
 stock int Furien_GetClientMoney(int client)
 {
-	return GetEntProp(client, Prop_Send, "m_iAccount");
+	//return GetEntProp(client, Prop_Send, "m_iAccount");
+	return Player_Money[client];
 }
 stock void Furien_AddClientMoney(int client, int amount)
 {
-	int money = GetEntProp(client, Prop_Send, "m_iAccount");
+	/*	int money = GetEntProp(client, Prop_Send, "m_iAccount");
 	money = money + amount;
 	money = money > 16000 ? 16000 : money;
-	SetEntProp(client, Prop_Send, "m_iAccount", money);
+	SetEntProp(client, Prop_Send, "m_iAccount", money);*/
+	
+	Player_Money[client] = Player_Money[client] + amount;
 }
 
 stock bool GetPlayerEye(int client, float pos[3])
