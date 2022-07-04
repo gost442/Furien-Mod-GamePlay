@@ -49,6 +49,7 @@ public Action Timer_BombBeacon(Handle timer, any index)
 {
 	TE_SetupBeamRingPoint(f_BombBeaconPos, 1.0, cVf_BombBeacon_Radius, i_BeamIndex, -1, 0, 32, cVf_BombBeacon_Life, cVf_BombBeacon_Width, 1.0, cVb_BombBeacon_RandomColor ? Beacon_RandomColor():cVi_BombBeacon_Color, 0, 0);
 	TE_SendToAll();
+	return Plugin_Continue;
 }
 public Action Timer_CTSpawnPost(Handle timer, any client)
 {
@@ -57,6 +58,7 @@ public Action Timer_CTSpawnPost(Handle timer, any client)
 	{
 		Menu_SelectWeapon(client);
 	}
+	return Plugin_Stop;
 }
 
 
