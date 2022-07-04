@@ -93,7 +93,8 @@ bool b_F_RoundSwtichTeams = false;
 
 
 #define HIDE_ALL 1<<2
-#define HIDE_RADAR 1<<12
+#define HIDEHUD_RADAR 1 << 12
+#define SHOWHUD_RADAR 1 >> 12
 
 
 enum struct AF_Shop
