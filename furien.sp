@@ -25,6 +25,7 @@
 
 float gc_fLastIdle[MAXPLAYERS+1];
 
+int Player_Money[MAXPLAYERS+1];
 
 char g_sRadioCommands[][] = { "coverme", "takepoint", "holdpos", "regroup", "followme", "takingfire", "go", "fallback", "sticktog", "getinpos", "stormfront", "report", "roger", "enemyspot", "needbackup", "sectorclear", 
 	"inposition", "reportingin", "getout", "negative", "enemydown", "compliment", "thanks", "cheer" };
