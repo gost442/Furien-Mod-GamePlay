@@ -81,8 +81,8 @@ public Action Event_OnRoundEnd(Event event, const char[] name, bool dontBroadcas
 						if (GetClientTeam(i) == CS_TEAM_CT)
 						{
 							Furien_AddClientMoney(i, WINNER_FURIEN_3STREAK);
-							SetEntProp(i, Prop_Send, "m_iHideHUD", SHOWHUD_RADAR);
 						}
+						SetEntProp(i, Prop_Send, "m_iHideHUD", SHOWHUD_RADAR);
 					}
 				}
 			}
