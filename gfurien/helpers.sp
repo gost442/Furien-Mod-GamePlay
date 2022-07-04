@@ -53,9 +53,9 @@ public Action Timer_BombBeacon(Handle timer, any index)
 }
 public Action Timer_CTSpawnPost(Handle timer, any client)
 {
-	SetEntProp(client, Prop_Send, "m_iHideHUD", GetEntProp(client, Prop_Send, "m_iHideHUD") | HIDE_RADAR);
 	if (IsWarmUp() == false)
 	{
+		SetEntProp(client, Prop_Send, "m_iHideHUD", HIDEHUD_RADAR);
 		Menu_SelectWeapon(client);
 	}
 	return Plugin_Stop;
