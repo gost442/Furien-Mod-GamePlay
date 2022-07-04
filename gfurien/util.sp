@@ -129,7 +129,7 @@ public Action Timer_CTRefillAmmo(Handle timer, any userid)
 
 
 
-stock int Beacon_RandomColor()
+stock int[] Beacon_RandomColor()
 {
   int color[4];
   color[0] = GetRandomInt(1,255);
@@ -196,7 +196,6 @@ stock void F_GetEntityRenderColor(int entity,int color[4])
 		color[i] = GetEntData(entity, offset + i, 1);
 	}
 }
-
 
 public int SlotByName (int client, const char[] szName)
 {
