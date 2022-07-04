@@ -70,10 +70,10 @@ int NC_GunGlowSprite;
 float PlayerRegenHPStart[MAXPLAYERS + 1];
 int MaxHealth[MAXPLAYERS + 1];
 int Max_Health[MAXPLAYERS + 1];
-bool bRegenerateHP[MAXPLAYERS + 1] = false;
+bool bRegenerateHP[MAXPLAYERS + 1] = { false, ... };
 
-bool bKnife_level_2[MAXPLAYERS + 1] = false;
-bool bKnife_level_1[MAXPLAYERS + 1] = false;
+bool bKnife_level_2[MAXPLAYERS + 1] = { false, ... };
+bool bKnife_level_1[MAXPLAYERS + 1] = { false, ... };
 
 float f_DisableBomb;
 bool b_DisableBomb;
