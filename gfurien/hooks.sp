@@ -165,7 +165,7 @@ public Action Event_OnPlayerDeath(Event event, const char[] name, bool dontBroad
 	ResetItems(victim);
 	return Plugin_Continue;
 }
-public Action Event_OnPlayerHurt(Event event, const char[] name, bool dontbroadcast)
+public void Event_OnPlayerHurt(Event event, const char[] name, bool dontbroadcast)
 {
 	int victim = GetClientOfUserId(event.GetInt("userid"));
 	int attacker = GetClientOfUserId(event.GetInt("attacker"));
