@@ -170,7 +170,6 @@ public void OnPluginStart()
 }
 public void OnMapStart()
 {
-	
 	SetCvarStr("mp_teamname_1", "ANTI-FURIENS");
 	SetCvarStr("mp_teamname_2", "FURIENS");
 	SetCvarInt("sv_ignoregrenaderadio", 1);
@@ -178,11 +177,14 @@ public void OnMapStart()
 	SetCvarInt("mp_solid_teammates", 0);
 	SetCvarInt("mp_maxrounds", 0);
 	SetCvarInt("mp_startmoney", 0);
-	SetCvarInt("mp_playercashawards", 1);
+	
+	SetCvarInt("mp_playercashawards", 0);
+	SetCvarInt("mp_teamcashawards", 0);
+	SetCvarInt("mp_maxmoney", 0);
+	
 	SetCvarFloat("mp_roundtime", 2.5);
 	SetCvarFloat("mp_roundtime_defuse", 2.5);
-	
-	SetCvarInt("mp_teamcashawards", 0);
+
 	SetCvarInt("mp_defuser_allocation", 0);
 	SetCvarInt("sv_deadtalk", 1);
 	SetCvarInt("sv_alltalk", 0);
