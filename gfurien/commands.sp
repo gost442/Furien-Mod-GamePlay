@@ -26,6 +26,7 @@ public Action Command_Shop(int client, int args)
 	{
 		if (IsPlayerAlive(client))
 		{
+			SetEntProp(client, Prop_Send, "m_iHideHUD", HIDEHUD_RADAR);
 			if (GetClientTeam(client) == CS_TEAM_CT)
 			{
 				Menu_AF_Shop(client);
@@ -34,7 +35,6 @@ public Action Command_Shop(int client, int args)
 			{
 				Menu_F_Shop(client);
 			}
-			SetEntProp(client, Prop_Send, "m_iHideHUD", HIDEHUD_RADAR);
 		}
 	}
 	return Plugin_Handled;
