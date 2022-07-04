@@ -253,6 +253,7 @@ public void OnClientPutInServer(int client)
 		SDKHook(client, SDKHook_OnTakeDamage, EventSDK_OnTakeDamage);
 		SDKHook(client, SDKHook_TraceAttack, EventSDK_OnTraceAttack);
 		
+		Player_Money[client] = 0;
 	}
 }
 
