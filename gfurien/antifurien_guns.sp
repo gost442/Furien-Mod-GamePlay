@@ -110,6 +110,7 @@ public int h_AF_SelectSecondaryWeapon(Menu menu, MenuAction action, int client, 
 				int index = StringToInt(Item);
 				Furien_TakeClientMoney(client, StringToInt(G_AntiFurien_Secundary_Guns[index + 2]));
 				GivePlayerItem(client, G_AntiFurien_Secundary_Guns[index + 1]);
+				SetEntProp(client, Prop_Send, "m_iHideHUD", SHOWHUD_RADAR);
 			}
 		}
 	}
