@@ -16,6 +16,7 @@ public Action Command_Guns(int client, int args)
 			Menu_SelectWeapon(client);
 		}
 	}
+	return Plugin_Handled;
 }
 
 public Action Command_Shop(int client, int args)
@@ -34,4 +35,5 @@ public Action Command_Shop(int client, int args)
 			}
 		}
 	}
+	return Plugin_Handled;
 } 
