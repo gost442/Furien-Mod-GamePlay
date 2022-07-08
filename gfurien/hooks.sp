@@ -105,7 +105,6 @@ public Action Event_OnPlayerSpawn(Event event, const char[] name, bool dontBroad
 	if (IsValidClient(client, true))
 	{
 		StripWeapons(client);
-		StripAllWeapons(client);
 		RoundStartVariableUpdate(client);
 		SetEntityMoveType(client, MOVETYPE_WALK);
 		SetEntityRenderMode(client, RENDER_TRANSCOLOR);
@@ -120,11 +119,11 @@ public Action Event_OnPlayerSpawn(Event event, const char[] name, bool dontBroad
 			GivePlayerItem(client, "weapon_flashbang");
 			SetEntityGravity(client, 1.0);
 			SetEntProp(client, Prop_Send, "m_ArmorValue", 50);
-			SetEntPropFloat(client, Prop_Data, "m_flLaggedMovementValue", 1.0);
+			SetEntPropFloat(client, Prop_Send, "m_flLaggedMovementValue", 1.0);
 			Max_Health[client] = 200;
 			MaxHealth[client] = 135;
 		}
-		else if (GetClientTeam(client) == CS_TEAM_T)
+		if (GetClientTeam(client) == CS_TEAM_T)
 		{
 			Furien_AddClientMoney(client, MONEY_GIVE_FURIEN_IN_SPAWN);
 			SetEntProp(client, Prop_Send, "m_ArmorValue", 50);
