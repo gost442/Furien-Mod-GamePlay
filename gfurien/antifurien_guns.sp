@@ -64,7 +64,7 @@ public void Menu_SelectSecondaryWeapon(int client)
 	char buffer[90], temp[60], ch_int[30];
 	Menu menu = CreateMenu(h_AF_SelectSecondaryWeapon);
 	menu.SetTitle("Choise Your Secundary Weapon\nYour Money: %i\n \n", Furien_GetClientMoney(client));
-	for (int i; i < sizeof(G_AntiFurien_Secundary_Guns); i += 4)
+	for (int i; i < sizeof(G_AntiFurien_Secundary_Guns); i += 3)
 	{
 		
 		IntToString(i, ch_int, sizeof(ch_int));
