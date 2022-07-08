@@ -470,3 +470,20 @@ public void OnGameFrame()
 		}
 	}
 } 
+
+
+public Action Hook_SetTransmit(int client, int viewer)
+{
+	if (IsValidClient(client, true))
+	{
+		if(GetClientTeam(viewer) == CS_TEAM_SPECTATOR || !IsPlayerAlive(viewer) || b_IsClientInvisible[client] == false)
+		{
+			return Plugin_Continue;
+		}
+		if (client != viewer && b_IsClientInvisible[client] == true)
+		{
+			return Plugin_Handled;
+		}
+	}
+	return Plugin_Continue;
+}
