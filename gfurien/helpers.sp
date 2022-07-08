@@ -115,18 +115,7 @@ stock void ChangeTeamScore(int index, int score)
 	CS_SetTeamScore(index, score);
 	SetTeamScore(index, score);
 }
-stock void StripAllWeapons(int client)
-{
-	int ent;
-	for (int i = 0; i <= 4; i++)
-	{
-		while ((ent = GetPlayerWeaponSlot(client, i)) != -1)
-		{
-			RemovePlayerItem(client, ent);
-			RemoveEdict(ent);
-		}
-	}
-}
+
 stock void StripWeapons(int client)
 {
 	int wepIdx;
