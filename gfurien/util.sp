@@ -197,7 +197,7 @@ stock void F_GetEntityRenderColor(int entity,int color[4])
 	}
 }
 
-public int SlotByName (int client, const char[] szName)
+public int SlotByName(int client, const char[] szName)
 {
 	char szClassname[36];
 	int entity = -1;
@@ -215,3 +215,18 @@ public int SlotByName (int client, const char[] szName)
 	
 	return -1;
 }
+
+public void Player_Shadow(int client, bool Type)
+{
+	if (Type == true)
+	{
+		b_IsClientInvisible[client] = false;
+		SDKHook(client, SDKHook_SetTransmit, Hook_SetTransmit);
+		
+	}
+	if (Type == false)
+	{
+		b_IsClientInvisible[client] = true;
+		SDKHook(client, SDKHook_SetTransmit, Hook_SetTransmit);
+	}
+} 
