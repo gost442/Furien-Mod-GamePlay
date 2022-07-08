@@ -431,6 +431,7 @@ public void OnGameFrame()
 			SetEntityRenderMode(client, RENDER_NORMAL);
 			SetEntityRenderColor(client, 255, 255, 255, 255);
 			FadeClient(client);
+			Player_Shadow(client, true);
 			
 			int wepIdx;
 			for (int s = 0; s < 5; s++)
@@ -456,6 +457,7 @@ public void OnGameFrame()
 			SetEntityRenderMode(client, RENDER_TRANSCOLOR);
 			SetEntityRenderColor(client, 255, 255, 255, 0);
 			FadeClient(client, 35, 0, 130, 30);
+			Player_Shadow(client, false);
 			
 			int wepIdx;
 			
