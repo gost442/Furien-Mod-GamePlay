@@ -8,7 +8,7 @@ public void EventSDK_OnClientThink(int client)
 			if (GetClientTeam(client) == CS_TEAM_T)
 			{
 				SetEntityGravity(client, cVf_Gravity);
-				SetEntPropFloat(client, Prop_Send, "m_flLaggedMovementValue", cVf_Speed);
+				SetEntPropFloat(client, Prop_Data, "m_flLaggedMovementValue", cVf_Speed);
 			}
 		}
 	}
