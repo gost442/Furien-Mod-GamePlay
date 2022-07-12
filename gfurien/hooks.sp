@@ -120,7 +120,7 @@ public Action Event_OnPlayerSpawn(Event event, const char[] name, bool dontBroad
 			GivePlayerItem(client, "weapon_flashbang");
 			SetEntityGravity(client, 1.0);
 			SetEntProp(client, Prop_Send, "m_ArmorValue", 50);
-			SetEntPropFloat(client, Prop_Data, "m_flLaggedMovementValue", 1.0);
+			SetEntPropFloat(client, Prop_Send, "m_flLaggedMovementValue", 1.0);
 			Max_Health[client] = 200;
 			MaxHealth[client] = 135;
 		}
@@ -207,7 +207,7 @@ public Action Event_OnBombPlanted(Event event, const char[] name, bool dontBroad
 		int index = -1;
 		while ((index = FindEntityByClassname(index, "planted_c4")) != -1)
 		{
-			GetEntPropVector(index, Prop_Send, "m_vecOrigin", f_BombBeaconPos);
+			GetEntPropVector(index, Prop_Data, "m_vecOrigin", f_BombBeaconPos);
 			h_BombBeacon = CreateTimer(cVf_BombBeacon_Delay, Timer_BombBeacon, index, TIMER_REPEAT | TIMER_FLAG_NO_MAPCHANGE);
 		}
 	}
