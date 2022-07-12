@@ -88,7 +88,7 @@ public Action EventSDK_OnTraceAttack(int victim, int &attacker, int &inflictor, 
 	{
 		if (GetClientTeam(attacker) == CS_TEAM_CT && GetClientTeam(victim) == CS_TEAM_T)
 		{
-			int i_Weapon = GetEntPropEnt(attacker, Prop_Send, "m_hActiveWeapon");
+			int i_Weapon = GetEntPropEnt(attacker, Prop_Data, "m_hActiveWeapon");
 			char wepname[128];
 			if (IsValidEntity(i_Weapon))
 			{
