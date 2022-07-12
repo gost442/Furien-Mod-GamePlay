@@ -101,10 +101,10 @@ public Action Timer_CTRefillAmmo(Handle timer, any userid)
   {
     if(GetClientTeam(client) == CS_TEAM_CT)
     {
-      int cWeapon = GetEntPropEnt(client, Prop_Send, "m_hActiveWeapon");
+      int cWeapon = GetEntPropEnt(client, Prop_Data, "m_hActiveWeapon");
       if(IsValidEntity(cWeapon))
       {
-        int iWeaponindex = GetEntProp(cWeapon, Prop_Send, "m_iItemDefinitionIndex");
+        int iWeaponindex = GetEntProp(cWeapon, Prop_Data, "m_iItemDefinitionIndex");
         for(int i; i < sizeof(G_AntiFurien_Weapons_Id); i++)
         {
           if(iWeaponindex == G_AntiFurien_Weapons_Id[i])
