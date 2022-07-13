@@ -266,13 +266,13 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3
 						if (vVel[2] < -1.0)
 						{
 							vVel[2] += cVf_FallDown;
-							SetEntPropVector(client, Prop_Send, "m_vecVelocity", vVel);
+							SetEntPropVector(client, Prop_Data, "m_vecVelocity", vVel);
 							TeleportEntity(client, NULL_VECTOR, NULL_VECTOR, vVel);
 						}
 						else if (vVel[2] > 200.0)
 						{
 							vVel[2] -= 20.0;
-							SetEntPropVector(client, Prop_Send, "m_vecVelocity", vVel);
+							SetEntPropVector(client, Prop_Data, "m_vecVelocity", vVel);
 							TeleportEntity(client, NULL_VECTOR, NULL_VECTOR, vVel);
 						}
 					}
