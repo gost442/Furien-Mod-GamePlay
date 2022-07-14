@@ -8,7 +8,7 @@ public void Menu_F_Shop(int client)
 	menu.SetTitle("Furien Shop\nYour Money: %i\n \n", i_Money);
 	
 	Format(buffer, sizeof(buffer), "HE - %i$", i_F_Shop.F_Item_HeGrenade);
-	menu.AddItem("hegrenade", buffer, (i_bShop[client].Shop_HeGrenade < 3 && i_Money >= i_F_Shop.F_Item_HeGrenade) ? ITEMDRAW_DEFAULT:ITEMDRAW_DISABLED);
+	menu.AddItem("hegrenade", buffer, (i_bShop[client].Shop_HeGrenade < 2 && i_Money >= i_F_Shop.F_Item_HeGrenade) ? ITEMDRAW_DEFAULT:ITEMDRAW_DISABLED);
 	
 	Format(buffer, sizeof(buffer), "Molotof - %i$", i_F_Shop.F_Item_Molotov);
 	menu.AddItem("molotof", buffer, (i_bShop[client].Shop_Molotov < 2 && i_Money >= i_F_Shop.F_Item_Molotov) ? ITEMDRAW_DEFAULT:ITEMDRAW_DISABLED);
