@@ -201,12 +201,13 @@ public void OnMapStart()
 	
 	AddFileToDownloadsTable("materials/sprites/redglow1.vmt");
 	AddFileToDownloadsTable("materials/sprites/bluelaser1.vmt");
-	AddFileToDownloadsTable("materials/sprites/laserbeam.vmt");
+	AddFileToDownloadsTable("materials/sprites/laserbeamv2.vmt");
 	NC_GunGlowSprite = PrecacheModel("materials/sprites/redglow1.vmt");
 	NC_GunFurien_LaserSprite = PrecacheModel("materials/sprites/bluelaser1.vmt");
-	i_BeamIndex = PrecacheModel("materials/sprites/laserbeam.vmt");
-	AddFileToDownloadsTable("materials/sprites/laserbeam.vtf");
+	i_BeamIndex = PrecacheModel("materials/sprites/laserbeamv2.vmt");
+	AddFileToDownloadsTable("materials/sprites/laserbeamv2.vtf");
 	AddFileToDownloadsTable("materials/sprites/bluelaser1.vtf");
+	AddFileToDownloadsTable("materials/sprites/redglow1.vtf");
 	
 	
 	LoopAllClients(i)
