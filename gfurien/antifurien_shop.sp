@@ -42,12 +42,16 @@ public int m_AF_Shop(Menu menu, MenuAction action, int client, int Position)
 				{
 					SetEntProp(client, Prop_Send, "m_bHasDefuser", 1);
 					Furien_TakeClientMoney(client, i_AF_Shop.AF_Item_Defuse);
+					
+					CPrintToChat(client, "\x02[AntiFurien-Shop] \x01You buy \x04Defuse Kit!");
 				}
 				if (StrEqual(Item, "100ap"))
 				{
 					SetEntProp(client, Prop_Send, "m_ArmorValue", 100);
 					SetEntProp(client, Prop_Send, "m_bHasHelmet", 1);
 					Furien_TakeClientMoney(client, i_AF_Shop.AF_Item_100ap);
+					
+					CPrintToChat(client, "\x02[AntiFurien-Shop] \x01You buy \x04+100AP!");
 				}
 				if (StrEqual(Item, "50hp"))
 				{
@@ -60,9 +64,16 @@ public int m_AF_Shop(Menu menu, MenuAction action, int client, int Position)
 						else
 						{
 							SetEntityHealth(client, GetClientHealth(client) + 50);
-							Furien_TakeClientMoney(client, i_AF_Shop.AF_Item_50hp);
-							i_bShop[client].Shop_50hp++;
 						}
+						
+						Furien_TakeClientMoney(client, i_AF_Shop.AF_Item_50hp);
+						i_bShop[client].Shop_50hp++;
+							
+						CPrintToChat(client, "\x02[AntiFurien-Shop] \x01You buy \x04+50hp!");
+					}
+					else
+					{
+					CPrintToChat(client, "You Have Max Health");
 					}
 				}
 				
@@ -71,18 +82,24 @@ public int m_AF_Shop(Menu menu, MenuAction action, int client, int Position)
 					bFurien_Laser[client] = true;
 					Furien_TakeClientMoney(client, i_AF_Shop.AF_Item_Furien_Laser);
 					i_bShop[client].Shop_Furien_Laser++;
+					
+					CPrintToChat(client, "\x02[AntiFurien-Shop] \x01You buy \x04Furien Laser!");
 				}
 				if (StrEqual(Item, "AT_RegenerateHP"))
 				{
 					bRegenerateHP[client] = true;
 					Furien_TakeClientMoney(client, i_AF_Shop.AF_Item_RegenerateHP);
 					i_bShop[client].Shop_RegenerateHP++;
+					
+					CPrintToChat(client, "\x02[AntiFurien-Shop] \x01You buy \x04Regenerare Hp!");
 				}
 				if (StrEqual(Item, "TacticalGranade"))
 				{
 					GivePlayerItem(client, "weapon_tagrenade");
 					Furien_TakeClientMoney(client, i_AF_Shop.AF_Item_Tactical_Granade);
 					i_bShop[client].Shop_Tactical_Granade++;
+					
+					CPrintToChat(client, "\x02[AntiFurien-Shop] \x01You buy \x04TaticalGranade!");
 				}
 			}
 		}
