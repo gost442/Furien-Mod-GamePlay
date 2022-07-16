@@ -44,12 +44,16 @@ public int m_F_Shop(Menu menu, MenuAction action, int client, int Position)
 					GivePlayerItem(client, "weapon_hegrenade");
 					Furien_TakeClientMoney(client, i_F_Shop.F_Item_HeGrenade);
 					i_bShop[client].Shop_HeGrenade++;
+					
+					CPrintToChat(client, "\x02[Furien-Shop] \x01You buy \x04he!");
 				}
 				if (StrEqual(Item, "molotof"))
 				{
 					GivePlayerItem(client, "weapon_molotov");
 					Furien_TakeClientMoney(client, i_F_Shop.F_Item_Molotov);
 					i_bShop[client].Shop_Molotov++;
+					
+					CPrintToChat(client, "\x02[Furien-Shop] \x01You buy \x04Molotov!");
 				}
 				if (StrEqual(Item, "50hp"))
 				{
@@ -62,16 +66,24 @@ public int m_F_Shop(Menu menu, MenuAction action, int client, int Position)
 						else
 						{
 							SetEntityHealth(client, GetClientHealth(client) + 50);
-							Furien_TakeClientMoney(client, i_F_Shop.F_Item_50hp);
-							i_bShop[client].Shop_50hp++;
 						}
+						Furien_TakeClientMoney(client, i_F_Shop.F_Item_50hp);
+						i_bShop[client].Shop_50hp++;
+						
+						CPrintToChat(client, "\x02[Furien-Shop] \x01You buy \x04Hp+50!");
 					}
+					else
+					 {
+					 CPrintToChat(client, "You Have Max Health");
+					 }
 				}
 				if (StrEqual(Item, "RegenerateHP"))
 				{
 					bRegenerateHP[client] = true;
 					Furien_TakeClientMoney(client, i_F_Shop.F_Item_RegenerateHP);
 					i_bShop[client].Shop_RegenerateHP++;
+					
+					CPrintToChat(client, "\x02[Furien-Shop] \x01You buy \x04Regenerare hp!");
 				}
 				if (StrEqual(Item, "knife_level_1"))
 				{
@@ -79,6 +91,8 @@ public int m_F_Shop(Menu menu, MenuAction action, int client, int Position)
 					bKnife_level_2[client] = false;
 					Furien_TakeClientMoney(client, i_F_Shop.F_Item_knife_level_1);
 					i_bShop[client].Shop_knife_level_1++;
+					
+					CPrintToChat(client, "\x02[Furien-Shop] \x01You buy \x04Knife x1 dmg!");
 				}
 				if (StrEqual(Item, "knife_level_2"))
 				{
@@ -86,6 +100,8 @@ public int m_F_Shop(Menu menu, MenuAction action, int client, int Position)
 					bKnife_level_1[client] = false;
 					Furien_TakeClientMoney(client, i_F_Shop.F_Item_knife_level_2);
 					i_bShop[client].Shop_knife_level_2++;
+					
+					CPrintToChat(client, "\x02[Furien-Shop] \x01You buy \x04Knife x2 dmg!");
 				}
 			}
 		}
