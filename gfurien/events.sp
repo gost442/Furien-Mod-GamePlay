@@ -172,35 +172,7 @@ public void OnPluginStart()
 }
 public void OnMapStart()
 {
-	SetCvarStr("mp_teamname_1", "ANTI-FURIENS");
-	SetCvarStr("mp_teamname_2", "FURIENS");
-	SetCvarInt("sv_ignoregrenaderadio", 1);
-	SetCvarInt("sv_disable_immunity_alpha", 1);
-	SetCvarInt("mp_solid_teammates", 0);
-	SetCvarInt("mp_maxrounds", 0);
-	SetCvarInt("mp_startmoney", 0);
-	
-	SetCvarInt("mp_playercashawards", 0);
-	SetCvarInt("mp_teamcashawards", 0);
-	SetCvarInt("mp_maxmoney", 0);
-	
-	SetCvarInt("ammo_grenade_limit_default", 5);
-	SetCvarInt("ammo_grenade_limit_flashbangs", 5);
-	SetCvarInt("ammo_grenade_limit_total", 10);
-	
-	SetCvarFloat("mp_roundtime", 2.5);
-	SetCvarFloat("mp_roundtime_defuse", 2.5);
-	
-	SetCvarInt("mp_defuser_allocation", 0);
-	SetCvarInt("sv_deadtalk", 1);
-	SetCvarInt("sv_alltalk", 0);
-	SetCvarInt("mp_autokick", 0);
-	SetCvarInt("sv_allow_thirdperson", 1);
-	SetCvarInt("mp_free_armor", 0);
-	SetCvarInt("mp_buytime", 0);
-	SetCvarInt("mp_force_assign_teams", 1);
-	SetCvarInt("mp_halftime", 0);
-	SetCvarInt("mp_halftime_duration", 5);
+	do_it();
 	
 	
 	i_F_RoundWinStream = 0;
@@ -237,6 +209,45 @@ public void OnMapStart()
 	i_F_Shop.F_Item_RegenerateHP = 3000;
 	
 	delete_shadow();
+}
+public void OnConfigsExecuted()
+{
+	do_it();
+}
+
+public void do_it()
+{
+	
+	SetCvarStr("mp_teamname_1", "ANTI-FURIENS");
+	SetCvarStr("mp_teamname_2", "FURIENS");
+	SetCvarInt("sv_ignoregrenaderadio", 1);
+	SetCvarInt("sv_disable_immunity_alpha", 1);
+	SetCvarInt("mp_solid_teammates", 0);
+	SetCvarInt("mp_maxrounds", 0);
+	SetCvarInt("mp_startmoney", 0);
+	
+	SetCvarInt("mp_playercashawards", 0);
+	SetCvarInt("mp_teamcashawards", 0);
+	SetCvarInt("mp_maxmoney", 0);
+	
+	SetCvarInt("ammo_grenade_limit_default", 5);
+	SetCvarInt("ammo_grenade_limit_flashbangs", 5);
+	SetCvarInt("ammo_grenade_limit_total", 10);
+	
+	SetCvarFloat("mp_roundtime", 2.5);
+	SetCvarFloat("mp_roundtime_defuse", 2.5);
+	
+	SetCvarInt("mp_defuser_allocation", 0);
+	SetCvarInt("sv_deadtalk", 1);
+	SetCvarInt("sv_alltalk", 0);
+	SetCvarInt("mp_autokick", 0);
+	SetCvarInt("sv_allow_thirdperson", 1);
+	SetCvarInt("mp_free_armor", 0);
+	SetCvarInt("mp_buytime", 0);
+	SetCvarInt("mp_force_assign_teams", 1);
+	SetCvarInt("mp_halftime", 0);
+	SetCvarInt("mp_halftime_duration", 5);
+	
 }
 public void OnMapEnd()
 {
