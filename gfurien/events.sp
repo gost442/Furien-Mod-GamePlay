@@ -167,6 +167,8 @@ public void OnPluginStart()
 	i_F_Shop.F_Item_knife_level_2 = 4000;
 	i_F_Shop.F_Item_Molotov = 1200;
 	i_F_Shop.F_Item_RegenerateHP = 3000;
+	
+	delete_shadow();
 }
 public void OnMapStart()
 {
@@ -184,7 +186,7 @@ public void OnMapStart()
 	
 	SetCvarFloat("mp_roundtime", 2.5);
 	SetCvarFloat("mp_roundtime_defuse", 2.5);
-
+	
 	SetCvarInt("mp_defuser_allocation", 0);
 	SetCvarInt("sv_deadtalk", 1);
 	SetCvarInt("sv_alltalk", 0);
@@ -229,6 +231,8 @@ public void OnMapStart()
 	i_F_Shop.F_Item_knife_level_2 = 4000;
 	i_F_Shop.F_Item_Molotov = 1200;
 	i_F_Shop.F_Item_RegenerateHP = 3000;
+	
+	delete_shadow();
 }
 public void OnMapEnd()
 {
