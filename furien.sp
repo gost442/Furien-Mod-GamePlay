@@ -2,7 +2,7 @@
 #include <cstrike>
 #include <sdktools>
 #include <sdkhooks>
-#include <multicolers>
+#include <multicolors>
 
 #pragma newdecls required
 
