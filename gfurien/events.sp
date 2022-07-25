@@ -184,6 +184,10 @@ public void OnMapStart()
 	SetCvarInt("mp_teamcashawards", 0);
 	SetCvarInt("mp_maxmoney", 0);
 	
+	SetCvarInt("ammo_grenade_limit_default", 5);
+	SetCvarInt("ammo_grenade_limit_flashbangs", 5);
+	SetCvarInt("ammo_grenade_limit_total", 10);
+	
 	SetCvarFloat("mp_roundtime", 2.5);
 	SetCvarFloat("mp_roundtime_defuse", 2.5);
 	
