@@ -53,6 +53,8 @@ public Action Event_OnRoundStart(Event event, const char[] name, bool dontBroadc
 	{
 		WipeHandle(h_BombBeacon);
 	}
+	
+	//delete_shadow();
 	return Plugin_Continue;
 }
 public Action Event_OnRoundEnd(Event event, const char[] name, bool dontBroadcast)
@@ -111,7 +113,6 @@ public Action Event_OnPlayerSpawn(Event event, const char[] name, bool dontBroad
 		SetEntityRenderColor(client);
 		b_ClientWallHang[client] = false;
 		b_ClientMovedAfterSpawn[client] = false;
-		Player_Shadow(client, true);
 		if (GetClientTeam(client) == CS_TEAM_CT)
 		{
 			Furien_AddClientMoney(client, MONEY_GIVE_ANTIFURIEN_IN_SPAWN);
