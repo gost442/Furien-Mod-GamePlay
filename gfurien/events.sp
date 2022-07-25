@@ -210,11 +210,6 @@ public void OnMapStart()
 	
 	delete_shadow();
 }
-public void OnConfigsExecuted()
-{
-	do_it();
-}
-
 public void do_it()
 {
 	
