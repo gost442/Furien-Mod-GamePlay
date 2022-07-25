@@ -234,6 +234,7 @@ public Action EventSDK_OnTakeDamage(int victim, int &attacker, int &inflictor, f
 	}
 	return Plugin_Continue;
 }
+// ate aki nao
 
 public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3], float angles[3], int &weapon, int &subtype, int &cmdnum, int &tickcount, int &seed, int mouse[2])
 {
@@ -365,69 +366,6 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3
 				}
 			}
 			g_cLastButtons[client] = buttons;
-			
-			//.. 	
-			if (GetClientTeam(client) == CS_TEAM_T)
-			{
-				bool setvisible;
-				char weaponname[64];
-				
-				setvisible = (IsClientMoveButtonsPressed(client));
-				
-				if (!setvisible)
-				{
-					GetClientWeapon(client, weaponname, sizeof(weaponname));
-					
-					if (StrEqual(weaponname, "weapon_hegrenade") || StrEqual(weaponname, "weapon_c4") || StrEqual(weaponname, "weapon_molotov") || StrEqual(weaponname, "weapon_taser"))
-						setvisible = true;
-				}
-				
-				if (setvisible)
-				{
-					gc_fLastIdle[client] = 0.0;
-					SetEntityRenderMode(client, RENDER_NORMAL);
-					SetEntityRenderColor(client, 255, 255, 255, 255);
-					FadeClient(client);
-					Player_Shadow(client, true);
-					
-					int wepIdx;
-					for (int s = 0; s < 5; s++)
-					{
-						if ((wepIdx = GetPlayerWeaponSlot(client, s)) != -1)
-						{
-							SetEntityRenderMode(wepIdx, RENDER_NORMAL);
-							SetEntityRenderColor(wepIdx, 255, 255, 255, 255);
-						}
-					}
-				}
-				else
-				{
-					if (gc_fLastIdle[client] == 0.0)
-					{
-						gc_fLastIdle[client] = GetGameTime();
-						return Plugin_Continue;
-					}
-					
-					if (GetGameTime() - gc_fLastIdle[client] < DELAY_INVIS)
-						return Plugin_Continue;
-					
-					SetEntityRenderMode(client, RENDER_TRANSCOLOR);
-					SetEntityRenderColor(client, 255, 255, 255, 0);
-					FadeClient(client, 35, 0, 130, 30);
-					Player_Shadow(client, false);
-					
-					int wepIdx;
-					
-					for (int s = 0; s < 5; s++)
-					{
-						if ((wepIdx = GetPlayerWeaponSlot(client, s)) != -1)
-						{
-							SetEntityRenderMode(wepIdx, RENDER_TRANSCOLOR);
-							SetEntityRenderColor(wepIdx, 255, 255, 255, 0);
-						}
-					}
-				}
-			}
 		}
 	}
 	return Plugin_Continue;
@@ -464,20 +402,72 @@ public void OnGameFrame()
 			CreateBeam(client);
 		}
 	}
-} 
-
-public Action Hook_SetTransmit(int client, int viewer)
-{
-	if (IsValidClient(client, true))
+	
+	bool setvisible;
+	char weaponname[64];
+	for (int client = 1; client <= MaxClients; client++)
 	{
-		if (GetClientTeam(viewer) == CS_TEAM_SPECTATOR || !IsPlayerAlive(viewer) || b_IsClientInvisible[client] == false)
+		if (!IsClientInGame(client))
+			continue;
+
+		if (!IsPlayerAlive(client))
+			continue;
+
+		if (GetClientTeam(client) != 2)
+			continue;
+
+		setvisible = (IsClientMoveButtonsPressed(client));
+
+		if (!setvisible)
 		{
-			return Plugin_Continue;
+			GetClientWeapon(client, weaponname, sizeof(weaponname));
+
+			if (StrEqual(weaponname, "weapon_hegrenade") || StrEqual(weaponname, "weapon_c4") || StrEqual(weaponname, "weapon_molotov") || StrEqual(weaponname, "weapon_taser"))
+				setvisible = true;
 		}
-		if (client != viewer && b_IsClientInvisible[client] == true)
+
+		if (setvisible)
 		{
-			return Plugin_Handled;
+			gc_fLastIdle[client] = 0.0;
+			SetEntityRenderMode(client, RENDER_NORMAL);
+			SetEntityRenderColor(client, 255, 255, 255, 255);
+			FadeClient(client);
+
+			int wepIdx;
+			for (int s = 0; s < 5; s++)
+			{
+				if ((wepIdx = GetPlayerWeaponSlot(client, s)) != -1)
+				{
+					SetEntityRenderMode(wepIdx, RENDER_NORMAL);
+					SetEntityRenderColor(wepIdx, 255, 255, 255, 255);
+				}
+			}
+		}
+		else
+		{
+			if (gc_fLastIdle[client] == 0.0)
+			{
+				gc_fLastIdle[client] = GetGameTime();
+				return;
+			}
+
+			if (GetGameTime() - gc_fLastIdle[client] < DELAY_INVIS)
+				return;
+
+			SetEntityRenderMode(client, RENDER_TRANSCOLOR);
+			SetEntityRenderColor(client, 255, 255, 255, 0);
+			FadeClient(client, 35, 0, 130, 30);
+
+			int wepIdx;
+
+			for (int s = 0; s < 5; s++)
+			{
+				if ((wepIdx = GetPlayerWeaponSlot(client, s)) != -1)
+				{
+					SetEntityRenderMode(wepIdx, RENDER_TRANSCOLOR);
+					SetEntityRenderColor(wepIdx, 255, 255, 255, 0);
+				}
+			}
 		}
 	}
-	return Plugin_Continue;
-}
+} 
