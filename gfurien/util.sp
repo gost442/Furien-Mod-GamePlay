@@ -1,7 +1,7 @@
 stock bool IsClientMoveButtonsPressed(int client)
 {
-    int buttons = GetClientButtons(client);
-    return (buttons & IN_FORWARD || buttons & IN_BACK || buttons & IN_MOVELEFT || buttons & IN_MOVERIGHT);
+	int buttons = GetClientButtons(client);
+	return (buttons & IN_FORWARD || buttons & IN_BACK || buttons & IN_MOVELEFT || buttons & IN_MOVERIGHT);
 }
 
 public Action CreateBeam(any client)
@@ -96,102 +96,102 @@ public bool TRDontHitSelf(int entity, int contentsMask, any client)
 
 public Action Timer_CTRefillAmmo(Handle timer, any userid)
 {
-  int client = GetClientOfUserId(userid);
-  if(IsValidClient(client, true))
-  {
-    if(GetClientTeam(client) == CS_TEAM_CT)
-    {
-      int cWeapon = GetEntPropEnt(client, Prop_Send, "m_hActiveWeapon");
-      if(IsValidEntity(cWeapon))
-      {
-        int iWeaponindex = GetEntProp(cWeapon, Prop_Send, "m_iItemDefinitionIndex");
-        for(int i; i < sizeof(G_AntiFurien_Weapons_Id); i++)
-        {
-          if(iWeaponindex == G_AntiFurien_Weapons_Id[i])
-          {
-            SetEntProp(cWeapon, Prop_Send, "m_iPrimaryReserveAmmoCount", G_AntiFurien_Weapons_Ammo_Secondary[i]);
-            break;
-          }
-        }
-      }
-    }
-    else
-    {
-      return Plugin_Stop;
-    }
-  }
-  else
-  {
-    return Plugin_Stop;
-  }
-  return Plugin_Continue;
+	int client = GetClientOfUserId(userid);
+	if (IsValidClient(client, true))
+	{
+		if (GetClientTeam(client) == CS_TEAM_CT)
+		{
+			int cWeapon = GetEntPropEnt(client, Prop_Send, "m_hActiveWeapon");
+			if (IsValidEntity(cWeapon))
+			{
+				int iWeaponindex = GetEntProp(cWeapon, Prop_Send, "m_iItemDefinitionIndex");
+				for (int i; i < sizeof(G_AntiFurien_Weapons_Id); i++)
+				{
+					if (iWeaponindex == G_AntiFurien_Weapons_Id[i])
+					{
+						SetEntProp(cWeapon, Prop_Send, "m_iPrimaryReserveAmmoCount", G_AntiFurien_Weapons_Ammo_Secondary[i]);
+						break;
+					}
+				}
+			}
+		}
+		else
+		{
+			return Plugin_Stop;
+		}
+	}
+	else
+	{
+		return Plugin_Stop;
+	}
+	return Plugin_Continue;
 }
 
 
 
 stock int[] Beacon_RandomColor()
 {
-  int color[4];
-  color[0] = GetRandomInt(1,255);
-  color[1] = GetRandomInt(1,255);
-  color[2] = GetRandomInt(1,255);
-  color[3] = 255;
-  return color;
+	int color[4];
+	color[0] = GetRandomInt(1, 255);
+	color[1] = GetRandomInt(1, 255);
+	color[2] = GetRandomInt(1, 255);
+	color[3] = 255;
+	return color;
 }
 
 stock bool GetPlayerEyeViewPoint(int client, float pos[3])
 {
-  float f_Angles[3];
-  float f_Origin[3];
-  GetClientEyeAngles(client, f_Angles);
-  GetClientEyePosition(client, f_Origin);
-  Handle h_TraceFilter = TR_TraceRayFilterEx(f_Origin, f_Angles, MASK_SOLID, RayType_Infinite, TraceEntityFilterPlayer);
-  if(TR_DidHit(h_TraceFilter))
-  {
-    TR_GetEndPosition(pos, h_TraceFilter);
-    CloseHandle(h_TraceFilter);
-    return true;
-  }
-  CloseHandle(h_TraceFilter);
-  return false;
+	float f_Angles[3];
+	float f_Origin[3];
+	GetClientEyeAngles(client, f_Angles);
+	GetClientEyePosition(client, f_Origin);
+	Handle h_TraceFilter = TR_TraceRayFilterEx(f_Origin, f_Angles, MASK_SOLID, RayType_Infinite, TraceEntityFilterPlayer);
+	if (TR_DidHit(h_TraceFilter))
+	{
+		TR_GetEndPosition(pos, h_TraceFilter);
+		CloseHandle(h_TraceFilter);
+		return true;
+	}
+	CloseHandle(h_TraceFilter);
+	return false;
 }
 
-public bool TraceEntityFilterPlayer(int iEntity,int iContentsMask)
+public bool TraceEntityFilterPlayer(int iEntity, int iContentsMask)
 {
 	return iEntity > MaxClients;
 }
-public bool TraceRayTryToHit(int entity,int mask)
+public bool TraceRayTryToHit(int entity, int mask)
 {
-	if(entity > 0 && entity <= MaxClients)
-  {
-    return false;
-  }
+	if (entity > 0 && entity <= MaxClients)
+	{
+		return false;
+	}
 	return true;
 }
-stock void F_GetEntityRenderColor(int entity,int color[4])
+stock void F_GetEntityRenderColor(int entity, int color[4])
 {
 	static bool gotconfig = false;
 	static char prop[32];
-
+	
 	if (!gotconfig) {
 		Handle gc = LoadGameConfigFile("core.games");
 		bool exists = GameConfGetKeyValue(gc, "m_clrRender", prop, sizeof(prop));
 		CloseHandle(gc);
-
+		
 		if (!exists) {
 			strcopy(prop, sizeof(prop), "m_clrRender");
 		}
-
+		
 		gotconfig = true;
 	}
-
+	
 	int offset = GetEntSendPropOffs(entity, prop);
-
+	
 	if (offset <= 0) {
 		ThrowError("SetEntityRenderColor not supported by this mod");
 	}
-
-	for (int i=0; i < 4; i++)
+	
+	for (int i = 0; i < 4; i++)
 	{
 		color[i] = GetEntData(entity, offset + i, 1);
 	}
@@ -216,17 +216,11 @@ public int SlotByName(int client, const char[] szName)
 	return -1;
 }
 
-public void Player_Shadow(int client, bool Type)
+public void delete_shadow()
 {
-	if (Type == true)
-	{
-		b_IsClientInvisible[client] = false;
-		SDKHook(client, SDKHook_SetTransmit, Hook_SetTransmit);
-		
+	int i = -1;
+	while ((i = FindEntityByClassname(i, "env_cascade_light")) != -1) {
+		AcceptEntityInput(i, "Kill");
 	}
-	if (Type == false)
-	{
-		b_IsClientInvisible[client] = true;
-		SDKHook(client, SDKHook_SetTransmit, Hook_SetTransmit);
-	}
+	
 } 
