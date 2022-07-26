@@ -242,6 +242,19 @@ public Action OnPlayerRunCmd(int client, int &buttons, int &impulse, float vel[3
 	{
 		if (IsPlayerAlive(client))
 		{
+			//-- BHOP
+
+			if (GetClientTeam(client) == CS_TEAM_T)
+			{
+				if (buttons & IN_JUMP && !(GetEntityFlags(client) & FL_ONGROUND) && !(GetEntityMoveType(client) & MOVETYPE_LADDER) && b_ClientWallHang[client] == false)
+				{
+					buttons &= ~IN_JUMP;
+				}
+				
+			}
+			
+			
+			//--
 			char weapon_name[32];
 			int cFlags = GetEntityFlags(client);
 			int cButtons = GetClientButtons(client);
@@ -409,30 +422,30 @@ public void OnGameFrame()
 	{
 		if (!IsClientInGame(client))
 			continue;
-
+		
 		if (!IsPlayerAlive(client))
 			continue;
-
+		
 		if (GetClientTeam(client) != 2)
 			continue;
-
+		
 		setvisible = (IsClientMoveButtonsPressed(client));
-
+		
 		if (!setvisible)
 		{
 			GetClientWeapon(client, weaponname, sizeof(weaponname));
-
+			
 			if (StrEqual(weaponname, "weapon_hegrenade") || StrEqual(weaponname, "weapon_c4") || StrEqual(weaponname, "weapon_molotov") || StrEqual(weaponname, "weapon_taser"))
 				setvisible = true;
 		}
-
+		
 		if (setvisible)
 		{
 			gc_fLastIdle[client] = 0.0;
 			SetEntityRenderMode(client, RENDER_NORMAL);
 			SetEntityRenderColor(client, 255, 255, 255, 255);
 			FadeClient(client);
-
+			
 			int wepIdx;
 			for (int s = 0; s < 5; s++)
 			{
@@ -450,16 +463,16 @@ public void OnGameFrame()
 				gc_fLastIdle[client] = GetGameTime();
 				return;
 			}
-
+			
 			if (GetGameTime() - gc_fLastIdle[client] < DELAY_INVIS)
 				return;
-
+			
 			SetEntityRenderMode(client, RENDER_TRANSCOLOR);
 			SetEntityRenderColor(client, 255, 255, 255, 0);
 			FadeClient(client, 35, 0, 130, 30);
-
+			
 			int wepIdx;
-
+			
 			for (int s = 0; s < 5; s++)
 			{
 				if ((wepIdx = GetPlayerWeaponSlot(client, s)) != -1)
