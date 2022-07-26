@@ -92,8 +92,6 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_guns", Command_Guns);
 	RegConsoleCmd("sm_gun", Command_Guns);
 	
-	RegConsoleCmd("sm_fsound", Commmand_Sound);
-	RegConsoleCmd("sm_fsounds", Commmand_Sound);
 	
 	
 	AddNormalSoundHook(OnNormalSoundPlayed);
