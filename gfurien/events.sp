@@ -186,17 +186,6 @@ public void OnMapStart()
 	AddFileToDownloadsTable("materials/sprites/bluelaser1.vtf");
 	AddFileToDownloadsTable("materials/sprites/redglow1.vtf");
 	
-	AddFileToDownloadsTable("sound/furien_sounds/behindyou.mp3");
-	AddFileToDownloadsTable("sound/furien_sounds/imhere.mp3");
-	AddFileToDownloadsTable("sound/furien_sounds/iseeyou.mp3");
-	AddFileToDownloadsTable("sound/furien_sounds/mynameisjeff1.mp3");
-	AddFileToDownloadsTable("sound/furien_sounds/turnaround.mp3");
-	
-	PrecacheSound("sound/furien_sounds/behindyou.mp3");
-	PrecacheSound("sound/furien_sounds/imhere.mp3");
-	PrecacheSound("sound/furien_sounds/iseeyou.mp3");
-	PrecacheSound("sound/furien_sounds/mynameisjeff1.mp3");
-	PrecacheSound("sound/furien_sounds/turnaround.mp3");
 	
 	LoopAllClients(i)
 	{
