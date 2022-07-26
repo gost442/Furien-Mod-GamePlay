@@ -92,6 +92,9 @@ public void OnPluginStart()
 	RegConsoleCmd("sm_guns", Command_Guns);
 	RegConsoleCmd("sm_gun", Command_Guns);
 	
+	RegConsoleCmd("sm_fsound", Commmand_Sound);
+	RegConsoleCmd("sm_fsounds", Commmand_Sound);
+	
 	
 	AddNormalSoundHook(OnNormalSoundPlayed);
 	for (int i; i < sizeof(g_sRadioCommands); i++)
@@ -172,8 +175,6 @@ public void OnPluginStart()
 }
 public void OnMapStart()
 {
-	do_it();
-	
 	
 	i_F_RoundWinStream = 0;
 	
@@ -187,6 +188,17 @@ public void OnMapStart()
 	AddFileToDownloadsTable("materials/sprites/bluelaser1.vtf");
 	AddFileToDownloadsTable("materials/sprites/redglow1.vtf");
 	
+	AddFileToDownloadsTable("sound/furien_sounds/behindyou.mp3");
+	AddFileToDownloadsTable("sound/furien_sounds/imhere.mp3");
+	AddFileToDownloadsTable("sound/furien_sounds/iseeyou.mp3");
+	AddFileToDownloadsTable("sound/furien_sounds/mynameisjeff1.mp3");
+	AddFileToDownloadsTable("sound/furien_sounds/turnaround.mp3");
+	
+	PrecacheSound("sound/furien_sounds/behindyou.mp3");
+	PrecacheSound("sound/furien_sounds/imhere.mp3");
+	PrecacheSound("sound/furien_sounds/iseeyou.mp3");
+	PrecacheSound("sound/furien_sounds/mynameisjeff1.mp3");
+	PrecacheSound("sound/furien_sounds/turnaround.mp3");
 	
 	LoopAllClients(i)
 	{
@@ -209,9 +221,6 @@ public void OnMapStart()
 	i_F_Shop.F_Item_RegenerateHP = 3000;
 	
 	delete_shadow();
-}
-public void do_it()
-{
 	
 	SetCvarStr("mp_teamname_1", "ANTI-FURIENS");
 	SetCvarStr("mp_teamname_2", "FURIENS");
@@ -224,10 +233,6 @@ public void do_it()
 	SetCvarInt("mp_playercashawards", 0);
 	SetCvarInt("mp_teamcashawards", 0);
 	SetCvarInt("mp_maxmoney", 0);
-	
-	SetCvarInt("ammo_grenade_limit_default", 5);
-	SetCvarInt("ammo_grenade_limit_flashbangs", 5);
-	SetCvarInt("ammo_grenade_limit_total", 10);
 	
 	SetCvarFloat("mp_roundtime", 2.5);
 	SetCvarFloat("mp_roundtime_defuse", 2.5);
@@ -243,7 +248,11 @@ public void do_it()
 	SetCvarInt("mp_halftime", 0);
 	SetCvarInt("mp_halftime_duration", 5);
 	
+	SetCvarInt("ammo_grenade_limit_default", 5);
+	//SetCvarStr("ammo_grenade_limit_flashbangs", "5");
+	//SetCvarStr("ammo_grenade_limit_total", "10");
 }
+
 public void OnMapEnd()
 {
 	LoopAllClients(i)
